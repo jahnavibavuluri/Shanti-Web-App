@@ -368,15 +368,6 @@ def records():
     return render_template('records.html', q=dict)
 
 
-#create a dictionary where the keys of the dict are all the dates of the stats. the values of the keys
-#will be the list of ids from that date for the respective activity/database. this will make easy to
-#display on the webpage.
-
-#initialize dict with keys as the dates of the Stats
-#search the last entry of all databases for each database
-#if there is a match, query all of the entries in that db for that date
-#that list will become the value of the respective key in the dict
-
 @app.route('/dashboard')
 @login_required
 def dashboard():
