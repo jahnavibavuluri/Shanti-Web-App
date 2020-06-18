@@ -1,0 +1,25 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Persistant Worrying
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <form class="form-pwevidenceForm" method="POST" action = "/howlikelytohappen">
+    <h2 class="form-pwevidenceForm-heading">Is There Evidence to Show That This Will Happen?</h2>
+    {{ wtf.form_field(form.thought)}}
+    {{ wtf.form_field(form.control)}}
+    {{ wtf.form_field(form.add)}}
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Enter</button>
+  </form>
+
+</div> <!-- /container -->
+{% endblock %}

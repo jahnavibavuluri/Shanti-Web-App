@@ -1,0 +1,25 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Self Criticism
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <form class="form-scchangeForm" method="POST" action = "/canichangeit">
+    <h2 class="form-scchangeForm-heading">Can I Change This About Myself?</h2>
+    {{ wtf.form_field(form.thought)}}
+    {{ wtf.form_field(form.control)}}
+    {{ wtf.form_field(form.add)}}
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Enter</button>
+  </form>
+
+</div> <!-- /container -->
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Negative Thinking
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <form class="form-nttrueForm" method="POST" action = "/isittrue">
+    <h2 class="form-nttrueForm-heading">Is This Thought True?</h2>
+    {{ wtf.form_field(form.thought)}}
+    {{ wtf.form_field(form.control)}}
+    {{ wtf.form_field(form.add)}}
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Enter</button>
+  </form>
+
+</div> <!-- /container -->
+{% endblock %}

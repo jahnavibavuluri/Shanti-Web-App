@@ -1,0 +1,10 @@
+<h1>Here is a list of all your past activities!</h1>
+
+{% for i in q %}
+<h2>{{ (i.date()) }}</h2>
+  <ol>
+    {% for j in q[i] %}
+    <li>{{ (j.thought) }}: {{ (j.suggestion) }}</li>
+    {% endfor %}
+  </ol>
+{% endfor %}

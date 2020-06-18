@@ -1,0 +1,290 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="{{ url_for('records') }}">My Activities</a></li>
+            <li><a href="{{ url_for('userprofile') }}">User Profile</a></li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <br>
+        <br>
+        <br>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Welcome, {{ name }}</h1>
+
+        {% if target_date <= today %}
+        <h2>Take the Daily Quiz to see your progress</h2>
+         <form action="http://127.0.0.1:5000/quiz">
+              <input type="submit" value="Take Daily Quiz!" />
+         </form>
+
+         <h2>Complete the suggested activity or choose one from below!</h2>
+         <form action="http://127.0.0.1:5000/whatwentwrong">
+              <input type="submit" value="What Went Wrong?" />
+         </form>
+
+         <form action="http://127.0.0.1:5000/rightinthepast">
+              <input type="submit" value="Good Things in the Past" />
+         </form>
+
+         <form action="http://127.0.0.1:5000/doihavecontrol">
+              <input type="submit" value="Do I Have Control?" />
+         </form>
+
+         <form action="http://127.0.0.1:5000/howlikelytohappen">
+              <input type="submit" value="Will it Actually Happen?" />
+         </form>
+
+         <form action="http://127.0.0.1:5000/isittrue">
+              <input type="submit" value="Is it true?" />
+         </form>
+
+         <form action="http://127.0.0.1:5000/negativethoughts">
+              <input type="submit" value="Positive Spin" />
+         </form>
+
+         <form action="http://127.0.0.1:5000/goodqualities">
+              <input type="submit" value="Good Qualities of Myself" />
+         </form>
+
+         <form action="http://127.0.0.1:5000/selfcriticism">
+              <input type="submit" value="Reword Your Criticisms" />
+         </form>
+
+         <form action="http://127.0.0.1:5000/canichangeit">
+              <input type="submit" value="Can I Change It?" />
+         </form>
+
+         <form action="http://127.0.0.1:5000/decisions">
+              <input type="submit" value="What's the Worst That Could Happen?" />
+         </form>
+
+         <form action="http://127.0.0.1:5000/canihelpnow">
+              <input type="submit" value="Can I Help Now?" />
+         </form>
+
+        {% endif %}
+
+          <h1>Your Stats from your most recent quiz!</h1>
+          <h2>Overall Average: {{ (overall) }} </h2>
+          <h2>Ruminating Thoughts: {{ (rm) }} </h2>
+          <h2>Persistant Worrying: {{ (pw) }} </h2>
+          <h2>Negative Thinking: {{ (nt) }} </h2>
+          <h2>Self Criticism: {{ (sc) }}  </h2>
+          <h2>Decision Making: {{ (dm) }} </h2>
+          <h2>Creativity: {{ (c) }} </h2>
+          <h2>Energy Levels: {{ (el) }} </h2>
+          <h2>Sleep: {{ (s) }} </h2><br>
+
+          {% if num_entries > 1 %}
+          <h1>Your progress:</h1>
+          <h2><h2>Overall Average: {{ (overall_diff) }} </h2>
+          <h2>Ruminating Thoughts: {{ (rm_diff) }} </h2>
+          <h2>Persistant Worrying: {{ (pw_diff) }} </h2>
+          <h2>Negative Thinking: {{ (nt_diff) }} </h2>
+          <h2>Self Criticism: {{ (sc_diff) }}  </h2>
+          <h2>Decision Making: {{ (dm_diff) }} </h2>
+          <h2>Creativity: {{ (c_diff) }} </h2>
+          <h2>Energy Levels: {{ (el_diff) }} </h2>
+          <h2>Sleep: {{ (s_diff) }} </h2><br>
+
+
+          <h1>Your weekly average:</h1>
+          <h2><h2>Overall Average: {{ (overall_avg) }} </h2>
+          <h2>Ruminating Thoughts: {{ (rm_avg) }} </h2>
+          <h2>Persistant Worrying: {{ (pw_avg) }} </h2>
+          <h2>Negative Thinking: {{ (nt_avg) }} </h2>
+          <h2>Self Criticism: {{ (sc_avg) }}  </h2>
+          <h2>Decision Making: {{ (dm_avg) }} </h2>
+          <h2>Creativity: {{ (c_avg) }} </h2>
+          <h2>Energy Levels: {{ (el_avg) }} </h2>
+          <h2>Sleep: {{ (s_avg) }} </h2><br>
+          {% endif %}
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+          </div>
+
+          <h2 class="sub-header">Section title</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1,001</td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td>1,002</td>
+                  <td>amet</td>
+                  <td>consectetur</td>
+                  <td>adipiscing</td>
+                  <td>elit</td>
+                </tr>
+                <tr>
+                  <td>1,003</td>
+                  <td>Integer</td>
+                  <td>nec</td>
+                  <td>odio</td>
+                  <td>Praesent</td>
+                </tr>
+                <tr>
+                  <td>1,003</td>
+                  <td>libero</td>
+                  <td>Sed</td>
+                  <td>cursus</td>
+                  <td>ante</td>
+                </tr>
+                <tr>
+                  <td>1,004</td>
+                  <td>dapibus</td>
+                  <td>diam</td>
+                  <td>Sed</td>
+                  <td>nisi</td>
+                </tr>
+                <tr>
+                  <td>1,005</td>
+                  <td>Nulla</td>
+                  <td>quis</td>
+                  <td>sem</td>
+                  <td>at</td>
+                </tr>
+                <tr>
+                  <td>1,006</td>
+                  <td>nibh</td>
+                  <td>elementum</td>
+                  <td>imperdiet</td>
+                  <td>Duis</td>
+                </tr>
+                <tr>
+                  <td>1,007</td>
+                  <td>sagittis</td>
+                  <td>ipsum</td>
+                  <td>Praesent</td>
+                  <td>mauris</td>
+                </tr>
+                <tr>
+                  <td>1,008</td>
+                  <td>Fusce</td>
+                  <td>nec</td>
+                  <td>tellus</td>
+                  <td>sed</td>
+                </tr>
+                <tr>
+                  <td>1,009</td>
+                  <td>augue</td>
+                  <td>semper</td>
+                  <td>porta</td>
+                  <td>Mauris</td>
+                </tr>
+                <tr>
+                  <td>1,010</td>
+                  <td>massa</td>
+                  <td>Vestibulum</td>
+                  <td>lacinia</td>
+                  <td>arcu</td>
+                </tr>
+                <tr>
+                  <td>1,011</td>
+                  <td>eget</td>
+                  <td>nulla</td>
+                  <td>Class</td>
+                  <td>aptent</td>
+                </tr>
+                <tr>
+                  <td>1,012</td>
+                  <td>taciti</td>
+                  <td>sociosqu</td>
+                  <td>ad</td>
+                  <td>litora</td>
+                </tr>
+                <tr>
+                  <td>1,013</td>
+                  <td>torquent</td>
+                  <td>per</td>
+                  <td>conubia</td>
+                  <td>nostra</td>
+                </tr>
+                <tr>
+                  <td>1,014</td>
+                  <td>per</td>
+                  <td>inceptos</td>
+                  <td>himenaeos</td>
+                  <td>Curabitur</td>
+                </tr>
+                <tr>
+                  <td>1,015</td>
+                  <td>sodales</td>
+                  <td>ligula</td>
+                  <td>in</td>
+                  <td>libero</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
