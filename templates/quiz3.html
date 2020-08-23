@@ -1,0 +1,14 @@
+<h1>Daily Quiz!</h1>
+<h2>On a scale of 1 to 5 (1 being the least and 5 being the most)
+    can you relate to this statement?</h2>
+<form action='/quizresults3' method='POST'>
+  <ol>
+    {% for i in q %}
+      <li> {{i}} </li>
+      {% for j in q[i] %}
+          <input type='radio' value='{{j}}' name='{{i}}' />{{j}}
+      {% endfor %}
+    {% endfor %}
+  </ol>
+  <input type="submit" value="submit" />
+</form>

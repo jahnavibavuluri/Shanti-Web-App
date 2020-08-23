@@ -45,10 +45,103 @@ Dashboard
           <h1 class="page-header">Welcome, {{ name }}</h1>
 
         {% if target_date <= today %}
+
+        {% if quiz_num == 1 %}
         <h2>Take the Daily Quiz to see your progress</h2>
-         <form action="https://overthink.herokuapp.com/quiz">
+         <form action="http://127.0.0.1:5000/quiz1">
               <input type="submit" value="Take Daily Quiz!" />
          </form>
+        {% endif %}
+
+        {% if quiz_num == 2 %}
+        <h2>Take the Daily Quiz to see your progress</h2>
+         <form action="http://127.0.0.1:5000/quiz2">
+              <input type="submit" value="Take Daily Quiz!" />
+         </form>
+        {% endif %}
+
+        {% if quiz_num == 3 %}
+        <h2>Take the Daily Quiz to see your progress</h2>
+         <form action="http://127.0.0.1:5000/quiz3">
+                <input type="submit" value="Take Daily Quiz!" />
+         </form>
+        {% endif %}
+
+        {% if quiz_num == 4 %}
+        <h2>Take the Daily Quiz to see your progress</h2>
+         <form action="http://127.0.0.1:5000/quiz4">
+              <input type="submit" value="Take Daily Quiz!" />
+         </form>
+        {% endif %}
+
+        {% if quiz_num == 5 %}
+        <h2>Take the Daily Quiz to see your progress</h2>
+         <form action="http://127.0.0.1:5000/quiz5">
+              <input type="submit" value="Take Daily Quiz!" />
+         </form>
+        {% endif %}
+
+        {% endif %}
+
+        {% if last_day == today %}
+        {% if activity == rm %}
+        <h2>The Daily Quiz shows that your Rumination stats are higher that the others. The suggested activities are as follows:</h2>
+        <form action="https://overthink.herokuapp.com/whatwentwrong">
+             <input type="submit" value="What Went Wrong?" />
+        </form>
+
+        <form action="https://overthink.herokuapp.com/rightinthepast">
+             <input type="submit" value="Good Things in the Past" />
+        </form>
+        {% endif %}
+
+        {% if activity == pw %}
+        <h2>The Daily Quiz shows that your Persistant Worrying stats are higher that the others. The suggested activities are as follows:</h2>
+        <form action="https://overthink.herokuapp.com/doihavecontrol">
+             <input type="submit" value="Do I Have Control?" />
+        </form>
+
+        <form action="https://overthink.herokuapp.com/howlikelytohappen">
+             <input type="submit" value="Will it Actually Happen?" />
+        </form>
+        {% endif %}
+
+        {% if activity == nt %}
+        <h2>The Daily Quiz shows that your Negative Thinking stats are higher that the others. The suggested activities are as follows:</h2>
+        <form action="https://overthink.herokuapp.com/isittrue">
+             <input type="submit" value="Is it true?" />
+        </form>
+
+        <form action="https://overthink.herokuapp.com/negativethoughts">
+             <input type="submit" value="Positive Spin" />
+        </form>
+        {% endif %}
+
+        {% if activity == sc %}
+        <h2>The Daily Quiz shows that your Self Criticism stats are higher that the others. The suggested activities are as follows:</h2>
+        <form action="https://overthink.herokuapp.com/goodqualities">
+             <input type="submit" value="Good Qualities of Myself" />
+        </form>
+
+        <form action="https://overthink.herokuapp.com/selfcriticism">
+             <input type="submit" value="Reword Your Criticisms" />
+        </form>
+
+        <form action="https://overthink.herokuapp.com/canichangeit">
+             <input type="submit" value="Can I Change It?" />
+        </form>
+        {% endif %}
+
+        {% if activity == dm %}
+        <h2>The Daily Quiz shows that your Decision Making stats are higher that the others. The suggested activities are as follows:</h2>
+        <form action="https://overthink.herokuapp.com/decisions">
+             <input type="submit" value="What's the Worst That Could Happen?" />
+        </form>
+
+        <form action="https://overthink.herokuapp.comcanihelpnow">
+             <input type="submit" value="Can I Help Now?" />
+        </form>
+        {% endif %}
 
          <h2>Complete the suggested activity or choose one from below!</h2>
          <form action="https://overthink.herokuapp.com/whatwentwrong">
@@ -95,9 +188,10 @@ Dashboard
               <input type="submit" value="Can I Help Now?" />
          </form>
 
-        {% endif %}
+         {% endif %}
 
           <h1>Your Stats from your most recent quiz!</h1>
+          <h3>{{ (final_message) }}</h3>
           <h2>Overall Average: {{ (overall) }} </h2>
           <h2>Ruminating Thoughts: {{ (rm) }} </h2>
           <h2>Persistant Worrying: {{ (pw) }} </h2>

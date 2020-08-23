@@ -4,7 +4,31 @@
 <h2>{{ (i.date()) }}</h2>
   <ol>
     {% for j in q[i] %}
-    <li>{{ (j.thought) }}: {{ (j.suggestion) }}</li>
+    {% if j=="rmchange" %}
+    <h3>What Went Wrong?</h3>
+    {% elif j=="rmpast" %}
+    <h3>Right In The Past</h3>
+    {% elif j=="pwcontrol" %}
+    <h3>Do I have control?</h3>
+    {% elif j=="pwevidence" %}
+    <h3>How likely to happen?</h3>
+    {% elif j=="nttrue" %}
+    <h3>Is it true?</h3>
+    {% elif j=="ntpositive" %}
+    <h3>Positive Spin</h3>
+    {% elif j=="scgood" %}
+    <h3>Good Qualities</h3>
+    {% elif j=="screword" %}
+    <h3>Reword your criticisms</h3>
+    {% elif j=="scchange" %}
+    <h3>Can I change it?</h3>
+    {% elif j=="dmworst" %}
+    <h3>Worst that could happen?</h3>
+    {% elif j=="dmnow" %}
+    <h3>Can I help now?</h3>
+    {% else %}
+    <li>{{ (j.thought) }}:{{ (j.control) }}:{{ (j.suggestion) }}</li>
+    {% endif %}
     {% endfor %}
   </ol>
 {% endfor %}
