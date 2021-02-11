@@ -38,4 +38,4 @@ As mentioned, this web appication is an extention of the iOS mobile app, which y
 Copyright (c) 2020 Jahnavi Bavuluri. Click [here](https://shanti-mental-heal.flycricket.io/privacy.html) for more information.
 
 ## Disclaimer
-Shanti Mental Health Application is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Rutgers University, or any of its subsidiaries or its affiliates.
+Shanti Mental Health Application is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Github, or any of its subsidiaries or its affiliates.
