@@ -24,7 +24,7 @@ Make sure you have the following set up before getting started:
 - Enter the working directory
 - Create a virtual environment.
   - `python3 -m venv ./venv`
-- Activiate the virtual environment.
+- Activate the virtual environment.
   - For Linux/Max: `source venv/bin/activate`
   - For Windows: `venv\Scripts\activate`
 - Install the necesssary dependencies.
